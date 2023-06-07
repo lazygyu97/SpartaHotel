@@ -1,4 +1,4 @@
-package com.hotel.function;
+package com.hotel.controller;
 
 public class Main {
 
