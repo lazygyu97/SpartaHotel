@@ -36,11 +36,9 @@ public class Reserve {
 //        }
 
         String uuid = UUID.randomUUID().toString().substring(0, 8);
-        ArrayList<String> roomDate = new ArrayList<>();
-        roomDate.add(reserveDate);
 
         HashMap<String, Receipt> receiptHash = new HashMap<>();
-        receiptHash.put(uuid, new Receipt(uuid, name, phone, selectedRoomNumber, roomDate));
+        receiptHash.put(uuid, new Receipt(uuid, name, phone, selectedRoomNumber, reserveDate));
         receipt.setReceiptHashMap(receiptHash);
 
         System.out.println("     결제 완료 되었습니다.");
@@ -49,7 +47,8 @@ public class Reserve {
         start();
 
     }
-
+    static ArrayList<String> dateValue2;
+    static String roomNum2;
     public static void roomShow(String reserveDate) {
 
         System.out.println(reserveDate + "에 이용 가능한 객실들 입니다.\n");
@@ -87,8 +86,8 @@ public class Reserve {
                 System.out.printf("\n%5s----------------------------------------------", " ");
                 System.out.printf("\n%5s방 번호: %s", " ", selectedRoom.getRoomNum());
                 System.out.printf("\n%5s이용 가능 인원: %s", " ", selectedRoom.getRoomCapcity());
-                System.out.printf("\n%5s침대 개수: %s개", " ", selectedRoom.getRoomBed());
-                System.out.printf(selectedRoom.getCheckTime());
+                System.out.printf("\n%5s침대 개수: %s개\n", " ", selectedRoom.getRoomBed());
+                System.out.printf("\n%5s%s"," ",selectedRoom.getCheckTime());
                 System.out.printf("\n%5s가격: %s원", " ", selectedRoom.getRoomPrice());
                 System.out.printf("\n%5s----------------------------------------------\n", " ");
                 System.out.printf("%5s%s호실 %s 날짜로 예약하시겠습니까?", " ", selectedRoomNumber, reserveDate);
@@ -116,6 +115,7 @@ public class Reserve {
         }
 
         public static void reserve () {
+
             Scanner sc = new Scanner(System.in);
 
             String firstDay = ReserveDate.getRoomDate().get(0).toString();
@@ -142,5 +142,6 @@ public class Reserve {
 
             String reserveDate = firstDay.substring(0, 4) + "-" + firstDay.substring(5, 7) + "-" + day;
             roomShow(reserveDate);
+
         }
     }

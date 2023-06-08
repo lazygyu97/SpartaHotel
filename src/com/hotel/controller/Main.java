@@ -62,7 +62,7 @@ public class Main {
         roomDetail.setDetailList(detail);
 
     }
-    static ArrayList<String> dateValue;
+    static String dateValue;
     static ArrayList<String> dateValue2;
     static String roomNum;
     static String roomNum2;
@@ -79,21 +79,16 @@ public class Main {
             for (Map.Entry<String, Receipt> entry : Receipt.getReceiptHashMap().entrySet()) {
                 roomNum=entry.getValue().getRoomNum();
                 dateValue=entry.getValue().getRoomDate();
-                System.out.println("영수증의 값들 ::"+roomNum+"&"+dateValue);
             }
 
-            for (int i=0; i<dateValue.size();i++){
-                deleteDates.add(dateValue.get(i));
+            deleteDates.add(dateValue);
 
-            }
             RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
-//
+
 //            for (Map.Entry<String, RoomDetail> entry2 : RoomDetail.getDetailList().entrySet()) {
 //                roomNum2= entry2.getValue().getRoomNum();
 //                dateValue2=entry2.getValue().getRoomDates();
 //                System.out.println(roomNum2+": "+dateValue2);
-//
-//
 //            }
 
         }
@@ -105,7 +100,7 @@ public class Main {
         System.out.printf("\n%5s안녕하세요 스파르타 호텔입니다!\n\n", " ");
         while (flag1) {
             System.out.printf("%5s이용하실 서비스를 선택해주세요!\n\n", " ");
-            System.out.println("1. 호텔 예약  2. 예약 확인  3. 예약 취소  4. 종료\n");
+            System.out.println("1. 호텔 예약  2. 예약 확인 및 취소  3. 종료 \n");
 
             System.out.print("서비스 번호를 입력해주세요 :");
             selectNum = sc.nextInt();
@@ -115,22 +110,13 @@ public class Main {
                 flag1 = false;
                 System.out.print("========================================================================");
                 System.out.println("\n예약 도와드리겠습니다.");
-
                 reserve();
             } else if (selectNum == 2) {
                 choiceCheck();
                 flag1 = false;
                 System.out.print("========================================================================");
 
-            } else if (selectNum == 3) {
-                flag1 = false;
-                System.out.print("========================================================================");
-
-            } else if (selectNum == 4) {
-                flag1 = false;
-                System.out.print("========================================================================");
-
-            } else {
+            }else {
                 System.out.println("잘못된 번호입니다. 다시 입력해주세요");
                 continue;
             }
@@ -141,17 +127,17 @@ public class Main {
     public static void choiceCheck() {
         new ReserveCheck();
         System.out.print("========================================================================");
-        try {
-            for(int i=0; i<2; i++){
-                Thread.sleep(2000);
-            }
-        }
-        catch (Exception e) {
-
-        }
-        finally {
-            start();
-        }
+//        try {
+//            for(int i=0; i<2; i++){
+//                Thread.sleep(2000);
+//            }
+//        }
+//        catch (Exception e) {
+//
+//        }
+//        finally {
+//            start();
+//        }
     }
 
     public static void main(String[] args) {

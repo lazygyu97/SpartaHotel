@@ -8,11 +8,11 @@ public class Receipt {
     private String name;
     private String phone;
     private String roomNum;
-    private ArrayList<String> roomDate;
+    private String roomDate;
 
     private static HashMap<String, Receipt> receiptHashMap = new HashMap<>();
 
-    public Receipt(String reserveId, String name, String phone, String roomNum, ArrayList roomDate) {
+    public Receipt(String reserveId, String name, String phone, String roomNum, String roomDate) {
         this.reserveId = reserveId;
         this.name = name;
         this.phone = phone;
@@ -63,11 +63,11 @@ public class Receipt {
         this.roomNum = roomNum;
     }
 
-    public ArrayList getRoomDate() {
+    public String getRoomDate() {
         return roomDate;
     }
 
-    public void setRoomDate(ArrayList roomDate) {
+    public void setRoomDate(String roomDate) {
         this.roomDate = roomDate;
     }
 
