@@ -19,16 +19,14 @@ public class Receipt {
         this.roomNum = roomNum;
         this.roomDate = roomDate;
     }
-//    @Override   //더미 값 출력시 주소값으로 나와서 추가했습니다.
-//    public String toString() {
-//        return  "이름=" + name +
-//                ", 전화번호=" + phone +
-//                ", 방 번호=" + roomNum +
-//                ", 날짜=" + roomDate;
-//    }
+
 
     public Receipt() {
 
+    }
+
+    public void receiptAdd(String reserveId, String name, String phone, String roomNum, String roomDate) {
+        this.receiptHashMap.put(reserveId, new Receipt(reserveId, name, phone, roomNum, roomDate));
     }
 
     public String getReserveId() {
