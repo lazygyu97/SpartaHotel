@@ -4,9 +4,18 @@ import java.util.ArrayList;
 
 public class RoomList {
 
-    public ArrayList<String> roomList=new ArrayList();
+    private ArrayList<String> roomList=new ArrayList();
+
+    public ArrayList<String> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(ArrayList<String> roomList) {
+        this.roomList = roomList;
+    }
 
     public RoomList() {
 
     }
+
 }
