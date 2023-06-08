@@ -71,16 +71,11 @@ public class ReserveCheck {
 
             commonKeyList.stream().forEach(key -> {
                 Receipt ReceiptList = Receipt.getReceiptHashMap().get(key);
-                if (commonKeyList.size() < 10) {
-                    System.out.print("선택 0" + number1.getAndIncrement() + ". ");
-                } else {
-                    System.out.print("선택 " + number1.getAndIncrement() + ". ");
-                }
-                System.out.printf("예약자 : %s  전화번호: %s  예약날짜: %s 예약한 방 : %s 예약번호 : %s",
-                        ReceiptList.getName(),ReceiptList.getPhone(),ReceiptList.getRoomDate(),ReceiptList.getRoomNum(),ReceiptList.getReserveId());
+                System.out.printf("예약번호 %s --> \t\t예약자: %s\t전화번호: %s\t예약날짜: %s\t예약호수: %s\n",
+                        ReceiptList.getReserveId(), ReceiptList.getName(),ReceiptList.getPhone(),ReceiptList.getRoomDate(),ReceiptList.getRoomNum());
             });
 
-            System.out.print("\n예약 취소를 원하는 내역의 '번호'를 숫자로 입력해주세요. > ");
+            System.out.print("\n예약 취소를 원하는 내역의 '예약번호'를 입력해주세요. > ");
             String inputCancelIndex = sc.nextLine();
 //            String receiptCancelIndex = (String) commonKeyList.get(inputCancelIndex);
 

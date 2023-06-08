@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class RoomDetail {
 
     private String roomNum;
-    private String roomCapcity;
+    private String roomCapacity;
     private String roomBed;
     private String checkTime;
     private ArrayList roomDates; //아직 애매함
@@ -14,9 +14,9 @@ public class RoomDetail {
 
     private static HashMap<String,RoomDetail> detailList = new HashMap<>();
 
-    public RoomDetail(String roomNum, String roomCapcity, String roomBed, String checkTime, ArrayList roomDates, int roomPrice){
+    public RoomDetail(String roomNum, String roomCapacity, String roomBed, String checkTime, ArrayList roomDates, int roomPrice){
         this.roomNum=roomNum;
-        this.roomCapcity=roomCapcity;
+        this.roomCapacity=roomCapacity;
         this.roomBed=roomBed;
         this.checkTime=checkTime;
         this.roomDates=roomDates;
@@ -27,8 +27,8 @@ public class RoomDetail {
         this.roomNum = roomNum;
     }
 
-    public void setRoomCapcity(String roomCapcity) {
-        this.roomCapcity = roomCapcity;
+    public void setRoomCapacity(String roomCapacity) {
+        this.roomCapacity = roomCapacity;
     }
 
     public void setRoomBed(String roomBed) {
@@ -55,8 +55,8 @@ public class RoomDetail {
         return roomNum;
     }
 
-    public String getRoomCapcity() {
-        return roomCapcity;
+    public String getRoomCapacity() {
+        return roomCapacity;
     }
 
     public String getRoomBed() {

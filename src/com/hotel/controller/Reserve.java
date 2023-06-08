@@ -45,14 +45,23 @@ public class Reserve {
 
         System.out.println("     결제 완료 되었습니다.");
         System.out.printf("%5s----------------------------------------------\n", " ");
+        try {
+            for(int i=0; i<2; i++){
+                Thread.sleep(1500);
+            }
+        }
+        catch (Exception e) {
 
-        start();
-
+        }
+        finally {
+            start();
+        }
     }
 
     public static void roomShow(String reserveDate) {
 
-        System.out.println(reserveDate + "에 이용 가능한 객실들 입니다.\n");
+        System.out.printf("\n%5s--------------------------", " ");
+        System.out.println("\n\t  " + reserveDate + " 이용 가능 객실");
         System.out.printf("%5s--------------------------\n", " ");
 
         for (String roomNumber : roomList.getRoomList()) {
@@ -86,9 +95,9 @@ public class Reserve {
                 RoomDetail selectedRoom = RoomDetail.getDetailList().get(selectedRoomNumber);
                 System.out.printf("\n%5s----------------------------------------------", " ");
                 System.out.printf("\n%5s방 번호: %s", " ", selectedRoom.getRoomNum());
-                System.out.printf("\n%5s이용 가능 인원: %s", " ", selectedRoom.getRoomCapcity());
+                System.out.printf("\n%5s이용 가능 인원: %s", " ", selectedRoom.getRoomCapacity());
                 System.out.printf("\n%5s침대 개수: %s개", " ", selectedRoom.getRoomBed());
-                System.out.printf(selectedRoom.getCheckTime());
+                System.out.printf("\n%5s", " ", selectedRoom.getCheckTime());
                 System.out.printf("\n%5s가격: %s원", " ", selectedRoom.getRoomPrice());
                 System.out.printf("\n%5s----------------------------------------------\n", " ");
                 System.out.printf("%5s%s호실 %s 날짜로 예약하시겠습니까?", " ", selectedRoomNumber, reserveDate);
@@ -121,25 +130,28 @@ public class Reserve {
             String firstDay = ReserveDate.getRoomDate().get(0).toString();
             String lastDay = ReserveDate.getRoomDate().get(6).toString();
 
-            System.out.println("예약 가능한 날짜는 " + firstDay + " 부터 " + lastDay + " 까지입니다.");
-            System.out.println("호텔 이용하실 날짜를 입력해주세요.");
-
-            System.out.print("날짜 입력 ->");
+            System.out.println("\n예약 가능한 날짜는 " + firstDay + " 부터 " + lastDay + " 까지입니다.");
+            System.out.print("호텔 이용하실 날짜의 일수를 입력해주세요. > ");
             String day = sc.next();
 
             int lineDate1 = Integer.parseInt(firstDay.substring(8, 10));
             int lineDate2 = Integer.parseInt(lastDay.substring(8, 10));
 
-            if (lineDate1 <= Integer.parseInt(day) && Integer.parseInt(day) <= lineDate2) {
-                if (day.length() == 1) {
-                    day = "0" + day;
-                    System.out.println(day);
+            try {
+                if (lineDate1 <= Integer.parseInt(day) && Integer.parseInt(day) <= lineDate2) {
+                    if (day.length() == 1) {
+                        day = "0" + day;
+                        System.out.println(day);
+                    }
+                } else {
+                    System.out.println("\n예약불가능한 날짜입니다.");
+                    reserve();
                 }
-            } else {
-                System.out.println("예약불가능한 날짜입니다.");
+            }
+            catch (Exception e){
+                System.out.println();
                 reserve();
             }
-
             String reserveDate = firstDay.substring(0, 4) + "-" + firstDay.substring(5, 7) + "-" + day;
             roomShow(reserveDate);
         }
