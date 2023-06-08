@@ -14,15 +14,17 @@ public class Main {
 
     private static RoomList roomList;
     private static RoomDetail roomDetail;
+    private static Receipt receipt;
 
     public static void setData() {
 
         roomList = RoomList.getInstance();
         roomDetail = RoomDetail.getInstance();
+        receipt = Receipt.getInstance(); // Receipt 인스턴스 초기화 추가
 
         LocalDate startDate = LocalDate.now(); // 현재 날짜를 가져옴
         ArrayList<LocalDate> dates = new ArrayList<>();
-
+        receipt.setReceiptHashMap(new HashMap<>()); // receiptHashMap 초기화
 
         for (int i = 0; i < 7; i++) {
 
@@ -33,6 +35,7 @@ public class Main {
 
         ArrayList<String> rooms = new ArrayList<>();
         HashMap<String, RoomDetail> detail = new HashMap<>();
+        ArrayList<String> defaultDates = new ArrayList<>();
 
         rooms.add("101");
         rooms.add("102");
@@ -46,19 +49,23 @@ public class Main {
 
         roomList.setRoomList(rooms);
 
-        detail.put("101", new RoomDetail("101", "1", "1", "체크인->13:00 / 체크아웃->12:00", dates, 85000));
-        detail.put("102", new RoomDetail("102", "1", "1", "체크인->13:00 / 체크아웃->12:00", dates, 85000));
-        detail.put("103", new RoomDetail("103", "1", "1", "체크인->13:00 / 체크아웃->12:00", dates, 85000));
-        detail.put("201", new RoomDetail("201", "2", "2", "체크인->13:00 / 체크아웃->12:00", dates, 93000));
-        detail.put("202", new RoomDetail("202", "2", "2", "체크인->13:00 / 체크아웃->12:00", dates, 93000));
-        detail.put("203", new RoomDetail("203", "2", "2", "체크인->13:00 / 체크아웃->12:00", dates, 93000));
-        detail.put("301", new RoomDetail("301", "3", "2", "체크인->13:00 / 체크아웃->12:00", dates, 110000));
-        detail.put("302", new RoomDetail("302", "3", "2", "체크인->13:00 / 체크아웃->12:00", dates, 110000));
-        detail.put("303", new RoomDetail("303", "3", "2", "체크인->13:00 / 체크아웃->12:00", dates, 110000));
+        detail.put("101", new RoomDetail("101", "1", "1", "체크인->13:00 / 체크아웃->12:00", defaultDates, 85000));
+        detail.put("102", new RoomDetail("102", "1", "1", "체크인->13:00 / 체크아웃->12:00", defaultDates, 85000));
+        detail.put("103", new RoomDetail("103", "1", "1", "체크인->13:00 / 체크아웃->12:00", defaultDates, 85000));
+        detail.put("201", new RoomDetail("201", "2", "2", "체크인->13:00 / 체크아웃->12:00", defaultDates, 93000));
+        detail.put("202", new RoomDetail("202", "2", "2", "체크인->13:00 / 체크아웃->12:00", defaultDates, 93000));
+        detail.put("203", new RoomDetail("203", "2", "2", "체크인->13:00 / 체크아웃->12:00", defaultDates, 93000));
+        detail.put("301", new RoomDetail("301", "3", "2", "체크인->13:00 / 체크아웃->12:00", defaultDates, 110000));
+        detail.put("302", new RoomDetail("302", "3", "2", "체크인->13:00 / 체크아웃->12:00", defaultDates, 110000));
+        detail.put("303", new RoomDetail("303", "3", "2", "체크인->13:00 / 체크아웃->12:00", defaultDates, 110000));
 
         roomDetail.setDetailList(detail);
 
     }
+    static ArrayList<String> dateValue;
+    static ArrayList<String> dateValue2;
+    static String roomNum;
+    static String roomNum2;
 
 
     public static void start() {
@@ -66,11 +73,42 @@ public class Main {
         if (Receipt.getReceiptHashMap().isEmpty()) {
 
         } else {
+            ArrayList<String> deleteDates =new ArrayList<>();
+
+            //최종 영수증에 방번호와 예약 날짜를 가져와 룸디테일의 해당 날짜 데이터를 제거한다.
             for (Map.Entry<String, Receipt> entry : Receipt.getReceiptHashMap().entrySet()) {
-                String key = entry.getKey();
-                String value = entry.getValue().getName();
-                System.out.println(key + ": " + value);
+                roomNum=entry.getValue().getRoomNum();
+                dateValue=entry.getValue().getRoomDate();
+                System.out.println("영수증의 값들 ::"+roomNum+"&"+dateValue);
             }
+
+            for (int i=0; i<dateValue.size();i++){
+                deleteDates.add(dateValue.get(i));
+
+            }
+            RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
+//
+//            System.out.println(dateValue.get(0));
+//            System.out.println(RoomDetail.getDetailList().get(roomNum).getRoomNum()+"에 있는 값 :"+RoomDetail.getDetailList().get(roomNum).getRoomDates());
+//            deleteDates.add();
+////            for (int i=0;i<RoomDetail.getDetailList().get(roomNum).getRoomDates().size();i++){
+////
+////                if(!Objects.equals(RoomDetail.getDetailList().get(roomNum).getRoomDates().get(i).toString(), dateValue.get(0))){
+////                    System.out.println();
+////                    deleteDates.add(RoomDetail.getDetailList().get(roomNum).getRoomDates().get(i).toString());
+////                }
+////            }
+//            System.out.println(deleteDates);
+//            RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
+
+            for (Map.Entry<String, RoomDetail> entry2 : RoomDetail.getDetailList().entrySet()) {
+                roomNum2= entry2.getValue().getRoomNum();
+                dateValue2=entry2.getValue().getRoomDates();
+                System.out.println(roomNum2+": "+dateValue2);
+
+
+            }
+
         }
 
         Scanner sc = new Scanner(System.in);
