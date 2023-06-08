@@ -88,26 +88,13 @@ public class Main {
             }
             RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
 //
-//            System.out.println(dateValue.get(0));
-//            System.out.println(RoomDetail.getDetailList().get(roomNum).getRoomNum()+"에 있는 값 :"+RoomDetail.getDetailList().get(roomNum).getRoomDates());
-//            deleteDates.add();
-////            for (int i=0;i<RoomDetail.getDetailList().get(roomNum).getRoomDates().size();i++){
-////
-////                if(!Objects.equals(RoomDetail.getDetailList().get(roomNum).getRoomDates().get(i).toString(), dateValue.get(0))){
-////                    System.out.println();
-////                    deleteDates.add(RoomDetail.getDetailList().get(roomNum).getRoomDates().get(i).toString());
-////                }
-////            }
-//            System.out.println(deleteDates);
-//            RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
-
-            for (Map.Entry<String, RoomDetail> entry2 : RoomDetail.getDetailList().entrySet()) {
-                roomNum2= entry2.getValue().getRoomNum();
-                dateValue2=entry2.getValue().getRoomDates();
-                System.out.println(roomNum2+": "+dateValue2);
-
-
-            }
+//            for (Map.Entry<String, RoomDetail> entry2 : RoomDetail.getDetailList().entrySet()) {
+//                roomNum2= entry2.getValue().getRoomNum();
+//                dateValue2=entry2.getValue().getRoomDates();
+//                System.out.println(roomNum2+": "+dateValue2);
+//
+//
+//            }
 
         }
 
@@ -131,6 +118,7 @@ public class Main {
 
                 reserve();
             } else if (selectNum == 2) {
+                choiceCheck();
                 flag1 = false;
                 System.out.print("========================================================================");
 
@@ -149,6 +137,21 @@ public class Main {
         }
 
 
+    }
+    public static void choiceCheck() {
+        new ReserveCheck();
+        System.out.print("========================================================================");
+        try {
+            for(int i=0; i<2; i++){
+                Thread.sleep(2000);
+            }
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            start();
+        }
     }
 
     public static void main(String[] args) {

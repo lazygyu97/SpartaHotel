@@ -25,15 +25,15 @@ public class Reserve {
         System.out.printf("%5s고객님의 전화번호를 입력해주세요 -> ", " ");
         String phone = sc.next();
 
-        if (phone.length() == 10) {
-            phone = phone.substring(0, 3) + "-" + phone.substring(3, 6) + "-" + phone.substring(6);
-        } else if (phone.length() == 11) {
-            phone = phone.substring(0, 3) + "-" + phone.substring(3, 6) + "-" + phone.substring(6);
-        } else {
-            System.out.println("     !!!!!잘못된 입력값입니다.!!!!!");
-            System.out.println("     결제 초기화면으로 돌아갑니다.");
-            payment(selectedRoomNumber, reserveDate);
-        }
+//        if (phone.length() == 10) {
+//            phone = phone.substring(0, 3) + "-" + phone.substring(3, 6) + "-" + phone.substring(6);
+//        } else if (phone.length() == 11) {
+//            phone = phone.substring(0, 3) + "-" + phone.substring(3, 6) + "-" + phone.substring(6);
+//        } else {
+//            System.out.println("     !!!!!잘못된 입력값입니다.!!!!!");
+//            System.out.println("     결제 초기화면으로 돌아갑니다.");
+//            payment(selectedRoomNumber, reserveDate);
+//        }
 
         String uuid = UUID.randomUUID().toString().substring(0, 8);
         ArrayList<String> roomDate = new ArrayList<>();
@@ -58,10 +58,8 @@ public class Reserve {
         for (String roomNumber : roomList.getRoomList()) {
             if (RoomDetail.getDetailList().get(roomNumber).getRoomDates().size() > 0) {
                 for (int i = 0; i < RoomDetail.getDetailList().get(roomNumber).getRoomDates().size(); i++) {
-                    System.out.println(RoomDetail.getDetailList().get(roomNumber).getRoomDates().get(i).toString());
-                    System.out.println(reserveDate);
                     if (Objects.equals(RoomDetail.getDetailList().get(roomNumber).getRoomDates().get(i).toString(), reserveDate)) {
-                        System.out.printf("%6s%s ", " ", "예약됨");
+                        System.out.printf("%6s%s ", " ", "xxx");
                         if (roomNumber.equals("103") || roomNumber.equals("203") || roomNumber.equals("303")) {
                             System.out.println();
                         }
@@ -104,6 +102,14 @@ public class Reserve {
                 } else {
                     System.out.println("1 또는 2 숫자로 입력해주세요.");
                 }
+            }else {
+                System.out.printf("----------------------------------------------\n", " ");
+                System.out.println("이미 예약된 방이거나 잘못된 입력값입니다.\n돌아갑니다.");
+                System.out.printf("----------------------------------------------\n", " ");
+
+                roomShow(reserveDate);
+
+
             }
 
 
