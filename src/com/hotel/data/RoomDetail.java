@@ -12,7 +12,7 @@ public class RoomDetail {
     private ArrayList roomDates; //아직 애매함
     private int roomPrice;
 
-    private HashMap<String,RoomDetail> detailList = new HashMap<>();
+    private static HashMap<String,RoomDetail> detailList = new HashMap<>();
 
     public RoomDetail(String roomNum, String roomCapcity, String roomBed, String checkTime, ArrayList roomDates, int roomPrice){
         this.roomNum=roomNum;
@@ -21,10 +21,6 @@ public class RoomDetail {
         this.checkTime=checkTime;
         this.roomDates=roomDates;
         this.roomPrice=roomPrice;
-    }
-
-    public RoomDetail(){
-
     }
 
     public void setRoomNum(String roomNum) {
@@ -79,7 +75,19 @@ public class RoomDetail {
         return roomPrice;
     }
 
-    public HashMap<String, RoomDetail> getDetailList() {
+    public static HashMap<String, RoomDetail> getDetailList() {
         return detailList;
     }
+
+    private static RoomDetail instance; // 싱글톤 인스턴스 변수
+
+    public static RoomDetail getInstance(){
+        if (instance == null) {
+            // 최초 호출 시에만 인스턴스 생성
+            instance = new RoomDetail("default", "default", "default", "default", new ArrayList(), 0);
+        }
+        return instance;
+    }
+
+
 }

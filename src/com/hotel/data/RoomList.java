@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class RoomList {
 
-    private ArrayList<String> roomList=new ArrayList();
+    private static ArrayList<String> roomList = new ArrayList();
 
-    public ArrayList<String> getRoomList() {
+    public static ArrayList<String> getRoomList() {
         return roomList;
     }
 
@@ -14,8 +14,9 @@ public class RoomList {
         this.roomList = roomList;
     }
 
-    public RoomList() {
-
+    public static RoomList getInstance() {
+        return new RoomList();
     }
+
 
 }
