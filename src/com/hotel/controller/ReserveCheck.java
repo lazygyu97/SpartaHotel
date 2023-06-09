@@ -106,20 +106,20 @@ public class ReserveCheck {
                 Receipt.getReceiptHashMap().remove(inputCancelIndex);
 
                 //예약 취소 확인 -> 수정 필요
-                System.out.println("\n예약이 취소되었는지 확인해주세요. ");
+                System.out.println("\n예약이 취소되었습니다. ");
                 System.out.println("==================================================================================================================");
-
-                for (Map.Entry<String, Receipt> entry : Receipt.getReceiptHashMap().entrySet()) {
-
-                    Receipt receiptEntry = entry.getValue();
-                    String reserveId = receiptEntry.getReserveId();
-                    String name = receiptEntry.getName();
-                    String phone = receiptEntry.getPhone();
-                    String date = receiptEntry.getRoomDate();
-                    String room = receiptEntry.getRoomNum();
-                    System.out.printf("예약자 : %s   전화번호: %s   예약날짜: %s    예약한 방 : %s    예약번호 : %s\n", name, phone, date, room, reserveId);
-
-                }
+//
+//                for (Map.Entry<String, Receipt> entry : Receipt.getReceiptHashMap().entrySet()) {
+//
+//                    Receipt receiptEntry = entry.getValue();
+//                    String reserveId = receiptEntry.getReserveId();
+//                    String name = receiptEntry.getName();
+//                    String phone = receiptEntry.getPhone();
+//                    String date = receiptEntry.getRoomDate();
+//                    String room = receiptEntry.getRoomNum();
+//                    System.out.printf("예약자 : %s   전화번호: %s   예약날짜: %s    예약한 방 : %s    예약번호 : %s\n", name, phone, date, room, reserveId);
+//
+//                }
                 System.out.println("2초 후 홈으로 돌아갑니다...");
 
             } else {
