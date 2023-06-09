@@ -10,6 +10,7 @@ import java.util.*;
 import static com.hotel.controller.Main.start;
 
 public class Reserve {
+
     static RoomList roomList = RoomList.getInstance();
     static RoomDetail roomDetail = RoomDetail.getInstance();
     static Receipt receipt = Receipt.getInstance();
@@ -44,9 +45,6 @@ public class Reserve {
         start();
 
     }
-
-    static ArrayList<String> dateValue2;
-    static String roomNum2;
 
     public static void roomShow(String reserveDate) {
 
@@ -85,7 +83,7 @@ public class Reserve {
             System.out.printf("\n%5s----------------------------------------------", " ");
             System.out.printf("\n%5s방 번호: %s", " ", selectedRoom.getRoomNum());
             System.out.printf("\n%5s이용 가능 인원: %s", " ", selectedRoom.getRoomCapcity());
-            System.out.printf("\n%5s침대 개수: %s개\n", " ", selectedRoom.getRoomBed());
+            System.out.printf("\n%5s침대 개수: %s개", " ", selectedRoom.getRoomBed());
             System.out.printf("\n%5s%s", " ", selectedRoom.getCheckTime());
             System.out.printf("\n%5s가격: %s원", " ", selectedRoom.getRoomPrice());
             System.out.printf("\n%5s----------------------------------------------\n", " ");

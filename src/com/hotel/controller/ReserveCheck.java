@@ -82,8 +82,8 @@ public class ReserveCheck {
                 } else {
                     System.out.print("선택 " + number1.getAndIncrement() + ". ");
                 }
-                roomNumber = ReceiptList.getRoomNum();
-                roomDates = ReceiptList.getRoomDate();
+//                roomNumber = ReceiptList.getRoomNum();
+//                roomDates = ReceiptList.getRoomDate();
                 System.out.printf("예약자 : %s   전화번호: %s   예약날짜: %s    예약한 방 : %s    예약번호 : %s\n",
                         ReceiptList.getName(), ReceiptList.getPhone(), ReceiptList.getRoomDate(), ReceiptList.getRoomNum(), ReceiptList.getReserveId());
 
@@ -100,7 +100,8 @@ public class ReserveCheck {
                 System.out.print("\n예약 취소를 원하는 내역의 '예약번호' 를 입력해주세요. > ");
                 String inputCancelIndex = sc.nextLine();
 
-
+                roomNumber= Receipt.getReceiptHashMap().get(inputCancelIndex).getRoomNum();
+                roomDates= Receipt.getReceiptHashMap().get(inputCancelIndex).getRoomDate();
                 delete(roomNumber, roomDates);
                 Receipt.getReceiptHashMap().remove(inputCancelIndex);
 

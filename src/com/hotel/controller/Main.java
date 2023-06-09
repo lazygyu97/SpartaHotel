@@ -65,6 +65,8 @@ public class Main {
 
     static String dateValue;
     static String roomNum;
+    static ArrayList<String> dateValue2;
+    static String roomNum2;
 
 
     public static void start() {
@@ -72,17 +74,18 @@ public class Main {
         if (Receipt.getReceiptHashMap().isEmpty()) {
 
         } else {
-            ArrayList<String> deleteDates = new ArrayList<>();
 
             //최종 영수증에 방번호와 예약 날짜를 가져와 룸디테일의 해당 날짜 데이터를 추가한다.
             for (Map.Entry<String, Receipt> entry : Receipt.getReceiptHashMap().entrySet()) {
+                ArrayList<String> deleteDates = new ArrayList<>();
+
                 roomNum = entry.getValue().getRoomNum();
                 dateValue = entry.getValue().getRoomDate();
+                deleteDates.add(dateValue);
+
+                RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
+
             }
-
-            deleteDates.add(dateValue);
-
-            RoomDetail.getDetailList().get(roomNum).setRoomDates(deleteDates);
 
 //            for (Map.Entry<String, RoomDetail> entry2 : RoomDetail.getDetailList().entrySet()) {
 //                roomNum2= entry2.getValue().getRoomNum();
