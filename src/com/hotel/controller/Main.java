@@ -102,11 +102,8 @@ public class Main {
         boolean flag1 = true;
         int selectNum;
 
-        System.out.println("========================================================================");
-        System.out.printf("%5s[ 안녕하세요 스파르타 호텔입니다! ]\n", " ");
-        System.out.println("========================================================================");
-
         while (flag1) {
+            System.out.println("========================================================================");
             System.out.printf("%5s이용하실 서비스를 선택해주세요!\n", " ");
             System.out.println("1. 호텔 예약  2. 예약 확인 및 취소  4. 종료\n");
 
@@ -142,7 +139,7 @@ public class Main {
         System.out.print("========================================================================");
         try {
             for(int i=0; i<2; i++){
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             }
         }
         catch (Exception e) {
@@ -154,6 +151,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        System.out.println("========================================================================");
+        System.out.printf("%5s[ 안녕하세요 스파르타 호텔입니다! ]\n", " ");
         setData();
         start();
     }

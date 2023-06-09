@@ -20,9 +20,9 @@ public class Reserve {
         System.out.printf("%5s----------------------------------------------", " ");
         System.out.printf("\n%5s결제 도와드리겠습니다.", " ");
 
-        System.out.printf("\n%5s고객님의 이름을 입력해주세요 -> ", " ");
+        System.out.printf("\n%5s고객님의 이름을 입력해주세요 > ", " ");
         String name = sc.next();
-        System.out.printf("%5s고객님의 전화번호를 입력해주세요 -> ", " ");
+        System.out.printf("%5s고객님의 전화번호를 입력해주세요 > ", " ");
         String phone = sc.next();
 
 //        if (phone.length() == 10) {
@@ -43,11 +43,12 @@ public class Reserve {
         receiptHash.put(uuid, new Receipt(uuid, name, phone, selectedRoomNumber, roomDate));
         receipt.setReceiptHashMap(receiptHash);
 
+        System.out.printf("%5s----------------------------------------------\n", " ");
         System.out.println("     결제 완료 되었습니다.");
         System.out.printf("%5s----------------------------------------------\n", " ");
         try {
             for(int i=0; i<2; i++){
-                Thread.sleep(1500);
+                Thread.sleep(1000);
             }
         }
         catch (Exception e) {
@@ -64,11 +65,17 @@ public class Reserve {
         System.out.println("\n\t  " + reserveDate + " 이용 가능 객실");
         System.out.printf("%5s--------------------------\n", " ");
 
+        String cancelIndex = new ReserveCheck(" ").getInputCancelIndex();
         for (String roomNumber : roomList.getRoomList()) {
             if (RoomDetail.getDetailList().get(roomNumber).getRoomDates().size() > 0) {
                 for (int i = 0; i < RoomDetail.getDetailList().get(roomNumber).getRoomDates().size(); i++) {
                     if (Objects.equals(RoomDetail.getDetailList().get(roomNumber).getRoomDates().get(i).toString(), reserveDate)) {
-                        System.out.printf("%6s%s ", " ", "xxx");
+                        if(Receipt.getReceiptHashMap().isEmpty()) {
+                            System.out.printf("%6s%s ", "", new ReserveCheck("").getCancelRoomNum());
+                        }
+                        else {
+                            System.out.printf("%6s%s ", "", "xxx");
+                        }
                         if (roomNumber.equals("103") || roomNumber.equals("203") || roomNumber.equals("303")) {
                             System.out.println();
                         }
@@ -95,13 +102,13 @@ public class Reserve {
                 RoomDetail selectedRoom = RoomDetail.getDetailList().get(selectedRoomNumber);
                 System.out.printf("\n%5s----------------------------------------------", " ");
                 System.out.printf("\n%5s방 번호: %s", " ", selectedRoom.getRoomNum());
-                System.out.printf("\n%5s이용 가능 인원: %s", " ", selectedRoom.getRoomCapacity());
+                System.out.printf("\n%5s이용 가능 인원: %s명", " ", selectedRoom.getRoomCapacity());
                 System.out.printf("\n%5s침대 개수: %s개", " ", selectedRoom.getRoomBed());
                 System.out.printf("\n%5s", " ", selectedRoom.getCheckTime());
                 System.out.printf("\n%5s가격: %s원", " ", selectedRoom.getRoomPrice());
                 System.out.printf("\n%5s----------------------------------------------\n", " ");
                 System.out.printf("%5s%s호실 %s 날짜로 예약하시겠습니까?", " ", selectedRoomNumber, reserveDate);
-                System.out.printf("\n%5s1. 예약  2. 취소 (뒤로돌아가기)\n%5s-> ", " ", " ");
+                System.out.printf("\n%5s1. 예약  2. 취소 (뒤로돌아가기)\n%5s입력 > ", " ", " ");
                 int selectedNum = sc.nextInt();
 
                 if (selectedNum == 1) {
