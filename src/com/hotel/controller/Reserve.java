@@ -11,7 +11,7 @@ import static com.hotel.controller.Main.start;
 
 public class Reserve {
 
-    static RoomList roomList = RoomList.getInstance();
+    RoomList roomList = RoomList.getInstance();
     static RoomDetail roomDetail = RoomDetail.getInstance();
     static Receipt receipt = Receipt.getInstance();
 
@@ -46,7 +46,7 @@ public class Reserve {
 
     }
 
-    public static void roomShow(String reserveDate) {
+    public void roomShow(String reserveDate) {
 
         System.out.println(reserveDate + "에 이용 가능한 객실들 입니다.\n");
         System.out.printf("%5s--------------------------\n", " ");
