@@ -1,5 +1,6 @@
 package com.hotel.controller;
 
+//어진 리팩토링 중
 import com.hotel.data.Receipt;
 import com.hotel.data.ReserveDate;
 import com.hotel.data.RoomDetail;

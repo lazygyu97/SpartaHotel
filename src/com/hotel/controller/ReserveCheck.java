@@ -2,12 +2,10 @@ package com.hotel.controller;
 
 import com.hotel.data.Receipt;
 import com.hotel.data.RoomDetail;
-import com.hotel.data.RoomList;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.hotel.controller.Main.start;
 
 public class ReserveCheck {
 
