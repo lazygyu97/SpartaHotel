@@ -32,7 +32,7 @@ public class Main {
 
 
 
-    static String dateValue;
+    private String dateValue;
     static String roomNum;
     static ArrayList<String> dateValue2;
     static String roomNum2;
